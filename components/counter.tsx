@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState, createRef } from "react";
 import moment from 'moment';
 
-export default function Counter({ startTime = '2015/05/01 08:00:00 EDT' }) {
+export default function Counter({ startTime = '2015-02-01T08:00:00-05:00' }) {
     const [text, setText] = useState('');
     const [width, setWidth] = useState('auto');
 

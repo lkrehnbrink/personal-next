@@ -22,7 +22,7 @@ export default function Header() {
                 <Image src='/lew@2x.jpeg' alt='Lew Avatar' width='60' height='60' style={{borderRadius: '50%', flexShrink: 0}}></Image>
                 <div style={{textAlign: 'center'}}>
                     <h1 style={{margin: '0 0 .5rem', fontSize: '3rem'}}>Lew Krehnbrink</h1>
-                    <p><u>Front-end Web Dev</u><br/>with<br/><Counter startTime='2015-05-01T08:00:00-05:00'/><br/>of full stack web development experience.<br/>Located in Chicago, IL.</p>
+                    <p><u>Front-end Web Dev</u><br/>with<br/><Counter startTime='2015-02-01T08:00:00-05:00'/><br/>of full stack web development experience.<br/>Located in Chicago, IL.</p>
                     <div style={{display: 'flex', gap: '1rem', justifyContent: 'center'}}>
                         <a href="https://www.linkedin.com/in/lew-krehnbrink-6184a239" target="_blank" title='Lew on linkedIn' rel="noreferrer">
                             <Image alt='LinkedIn Logo' {...linkedInIcon} width={iconSize} height={iconSize}/>
