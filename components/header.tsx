@@ -1,9 +1,6 @@
 import Image from "next/image"
 import Counter from "./counter"
 
-import githubIcon from 'bootstrap-icons/icons/github.svg';
-import linkedInIcon from 'bootstrap-icons/icons/linkedin.svg';
-
 export default function Header() {
     const iconSize = 24;
 
@@ -15,8 +12,6 @@ export default function Header() {
         alignItems: 'center', 
         gap: '1rem'
     };
-
-    console.log(githubIcon);
 
     return (
         <header>
