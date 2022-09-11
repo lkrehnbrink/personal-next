@@ -16,7 +16,9 @@ export default function Header() {
     return (
         <header>
             <nav style={navStyle}>
-                <Image src='/lew@2x.jpeg' alt='Lew Avatar' width='60' height='60' style={{borderRadius: '50%', flexShrink: 0}}></Image>
+                <span className="avatar">
+                    <Image src='/lew@2x.jpeg' alt='Lew Avatar' width='120' height='120' style={{borderRadius: '50%', flexShrink: 0}}></Image>
+                </span>
                 <div style={{textAlign: 'center'}}>
                     <h1 style={{margin: '0 0 .5rem', fontSize: '3rem'}}>Lew Krehnbrink</h1>
                     <p><u>Front-end Web Dev</u><br/> with <br/><Counter startTime='2015-02-01T08:00:00-05:00'/><br/> of full stack web development experience. <br/> Located in Chicago, IL. </p>
