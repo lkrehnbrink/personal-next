@@ -1,52 +1,42 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../components/header'
 import Head from 'next/head'
 
-import * as ga from '../lib/ga'
+import { GTM_ID, pageview } from '../lib/ga';
+
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    if ('production' !== process.env.APP_ENV) {
-      return;
-    }
-
-    const handleRouteChange = (url: string) => {
-      ga.pageview(url)
-    }
-    
-    router.events.on('routeChangeComplete', handleRouteChange)
-
+    router.events.on('routeChangeComplete', pageview)
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
+      router.events.off('routeChangeComplete', pageview)
     }
-  },[router.events]);
+  }, [router.events])
 
   return <>
     <Head>
-      {'production' === process.env.APP_ENV && <>
-        {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <script
+      {
+        'production' === process.env.APP_ENV && 
+        <Script
+          id='gtm'
+          strategy='afterInteractive'
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-                page_path: window.location.pathname,
-              });
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer', '${GTM_ID}');
             `,
           }}
         />
-      </>}
+      }
     </Head>
     <Header />
     <Component {...pageProps} />
