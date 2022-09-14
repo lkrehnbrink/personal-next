@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <>
     { 
-      process.env.NEXT_PUBLIC_APP_ENV === 'development' && 
+      process.env.NEXT_PUBLIC_APP_ENV === 'production' && 
       <Script
         id='gtm'
         strategy='afterInteractive'
