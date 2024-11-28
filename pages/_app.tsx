@@ -1,9 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Header from '../components/header'
-import Head from 'next/head'
 
 import { GTM_ID, pageview } from '../lib/ga';
 
